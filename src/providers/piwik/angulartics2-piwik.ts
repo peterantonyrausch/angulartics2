@@ -62,7 +62,11 @@ export class Angulartics2Piwik {
 
   setUserProperties(properties: any) {
     try {
-      _paq.push(['setCustomVariable', properties]);
+      _paq.push(['setCustomVariable', 
+        properties.index, 
+        properties.name, 
+        properties.value, 
+        properties.scope ? properties.scope : 'page']);
     } catch (e) {
       if (!(e instanceof ReferenceError)) {
         throw e;
